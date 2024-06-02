@@ -1,6 +1,7 @@
-body{
-  flex-wrap: ;
+body {
+  width: 100%;
 }
+
 .hero {
   background-size: cover;
   color: white;
@@ -30,35 +31,33 @@ body{
 
 .navbar {
   background-color: #fff;
-  
+
   border-bottom: 1px solid #ddd;
-  
+
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-  
+
   font-weight: bold;
-  
+
 }
 
 .navbar-nav .nav-link {
   color: #333;
-  
+
 }
 
 .navbar-nav .nav-link:hover {
   color: #007bff;
-  /* Link color on hover */
+  
 }
 
-/* Header */
+
 .jumbotron {
   background-color: #f8f9fa;
-  text-align: start;
-  justify-content: space-evenly;
   overflow: hidden;
-  }
+}
 
 .a {
   height: max-content;
@@ -73,52 +72,50 @@ body{
 
 .card {
   margin-bottom: 20px;
-  
-  
+
+
 }
-.card-body{
+
+.card-body {
   height: 17vh;
   border-radius: 5px;
   border: none;
-background: #f0f0f0;
-transition: box-shadow 0.3s;
+  background: #f0f0f0;
+  transition: box-shadow 0.3s;
 
 }
-.card-body:hover{
-  
-  box-shadow:  7px 7px 14px #a1a1a1,
-             -7px -7px 14px #dbd8d8;
+
+.card-body:hover {
+
+  box-shadow: 7px 7px 14px #a1a1a1,
+    -7px -7px 14px #dbd8d8;
 
 }
 
 .card-title {
   font-weight: bold;
-  
+
 }
 
 .modal-content {
   background-color: #fff;
-  
+
 }
 
 .modal-title {
   font-weight: bold;
-  
+
 }
 
 .modal-body input[type="email"],
 .modal-body textarea {
   border: 1px solid #ced4da;
-  
 }
 
 .modal-body input[type="email"]:focus,
 .modal-body textarea:focus {
   border-color: #007bff;
- 
 }
-
-
 .card-body i {
   font-size: 2rem;
   margin-top: 10px;
@@ -159,12 +156,14 @@ transition: box-shadow 0.3s;
 .card:hover .card-img-top {
   transition: transform 0.5s ease;
 }
+
 .list-group-item {
   background-color: rgb(249, 249, 249);
   color: black;
   border: none;
 }
-#scrollToTopBtn{
+
+#scrollToTopBtn {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -175,9 +174,11 @@ transition: box-shadow 0.3s;
   width: 60px;
   border: none;
 }
-.contact-us-submit{
+
+.contact-us-submit {
   width: 100%;
 }
+
 .why-choose-us {
   display: flex;
   flex-direction: column;
@@ -186,34 +187,93 @@ transition: box-shadow 0.3s;
   padding: 20px;
   background-color: #f8f9fa;
   flex-wrap: wrap;
-  
-  
 }
 
 .features {
   display: flex;
   justify-content: space-around;
 }
+
 .feature-item {
   width: calc(100% / 4);
 }
+
 .feature-item img {
   margin-bottom: 20px;
 }
+
 .feature-item h4 {
   color: #333;
 }
+
 .feature-item p {
   color: #666;
   font-size: 14px;
 }
+
 .feedback-section {
   text-align: center;
   padding: 50px 0;
   background-color: #f8f9fa;
 }
+
 .quote {
   font-style: italic;
   color: #555;
 }
 
+@media (max-width: 576px) {
+  .jumbotron {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .a {
+    width: 100%;
+  }
+
+  .a h1 {
+    font-size: 36px;
+  }
+
+  .a p {
+    font-size: 14px;
+  }
+
+  .a button {
+    margin-top: 20px;
+  }
+
+  .carousel-item {
+    text-align: center;
+  }
+
+  .carousel-item img {
+    max-width: 100%;
+  }
+
+  .why-choose-us {
+    padding: 10px;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .feature-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .feature-item img {
+    margin-bottom: 10px;
+  }
+
+  .feature-item h4 {
+    font-size: 18px;
+  }
+
+  .feature-item p {
+    font-size: 14px;
+  }
+}
