@@ -106,6 +106,22 @@ header {
   border-color: #007bff;
 }
 
+.btn-close {
+    color: rgb(0, 0, 0); /* or black */
+}
+
+
+.form-group.full-width {
+    width: 100%;
+}
+
+/* Custom CSS for side-by-side inputs */
+.form-group.inline {
+    display: inline-block;
+    width: 48%; /* Adjust as needed */
+    margin-right: 2%; /* Adjust as needed */
+}
+
 .card-body i {
   font-size: 2rem;
   margin-top: 10px;
