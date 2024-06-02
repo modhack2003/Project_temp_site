@@ -86,7 +86,7 @@ header {
 .modal-content {
   background-color: #fff;
 }
-.modal-header .btn-close {
+.modal-header  {
   border: none;
   background: transparent;
   font-size: 1.5rem;

@@ -273,7 +273,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="contactUsModalLabel">Talk to us</h5>
-                        <button type="button" class="btn-close btn-danger " data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form id="contact-form" action="https://getform.io/f/paoxdekb" method="POST">
@@ -301,7 +301,6 @@
                 </div>
             </div>
         </div>
-    
     <footer
         style="background-color:#FF3147; padding: 20px; color: white; display: flex; align-items: center; justify-content: center;  overflow:hidden; height:25vh; width: 100%;">
         <img src="./img/Group 500.png" alt="logo">
@@ -319,85 +318,65 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', function () {
-        const contactUsModalEl = document.getElementById('contactUsModal');
-        const contactUsModal = new bootstrap.Modal(contactUsModalEl);
     
-        document.getElementById('contact-us-button').addEventListener('click', function () {
-            contactUsModal.show();
-        });
-    
-        contactUsModalEl.addEventListener('hidden.bs.modal', function () {
-            
-            document.querySelectorAll('.modal-backdrop').forEach(function (backdrop) {
-                backdrop.remove();
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+            const contactUsModalEl = document.getElementById('contactUsModal');
+            const contactUsModal = new bootstrap.Modal(contactUsModalEl);
+
+            document.getElementById('contact-us-button').addEventListener('click', function () {
+                contactUsModal.show();
+            });
+
+            contactUsModalEl.addEventListener('hidden.bs.modal', function () {
+                // Ensure Bootstrap handles the modal backdrop and body classes
+                document.body.classList.remove('modal-open');
+                document.body.style.removeProperty('padding-right');
+            });
+
+            document.getElementById('contact-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                fetch('https://getform.io/f/paoxdekb', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(function () {
+                    contactUsModal.hide();
+                    document.getElementById('contact-form').reset();
+
+                    var toastEl = document.getElementById('formToast');
+                    var toast = new bootstrap.Toast(toastEl);
+                    toast.show();
+                })
+                .catch(function () {
+                    alert('There was an error submitting the form. Please try again.');
+                });
+            });
+
+            // Ensure only one instance of the modal is created
+            const listItems = document.querySelectorAll(".list-group-item");
+            const projectImage = document.getElementById("project-image");
+
+            listItems.forEach(function (item) {
+                item.addEventListener("click", function () {
+                    const prevActiveItem = document.querySelector('.list-group-item.active');
+                    if (prevActiveItem) {
+                        prevActiveItem.style.backgroundColor = '';
+                        prevActiveItem.style.color = '';
+                        prevActiveItem.classList.remove('active');
+                    }
+
+                    this.style.backgroundColor = '#FF3147';
+                    this.style.color = 'white';
+                    this.classList.add('active');
+
+                    const imagePath = this.getAttribute("data-image");
+                    projectImage.setAttribute("src", imagePath);
+                });
             });
         });
-    
-        document.getElementById('contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            fetch('https://getform.io/f/paoxdekb', {
-                method: 'POST',
-                body: formData
-            })
-            .then(function () {
-                contactUsModal.hide();
-                document.getElementById('contact-form').reset();
-    
-                var toastEl = document.getElementById('formToast');
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-            })
-            .catch(function () {
-                alert('There was an error submitting the form. Please try again.');
-            });
-        });
-    });
-    document.getElementById('contact-us-button').addEventListener('click', () => {
-        const contactUsModal = new bootstrap.Modal(document.getElementById('contactUsModal'));
-        contactUsModal.show();
-    });
-    
-    document.addEventListener("DOMContentLoaded", function () {
-        const listItems = document.querySelectorAll(".list-group-item");
-        const projectImage = document.getElementById("project-image");
-    
-        listItems.forEach(function (item) {
-            item.addEventListener("click", function () {
-                const prevActiveItem = document.querySelector('.list-group-item.active');
-                if (prevActiveItem) {
-                    prevActiveItem.style.backgroundColor = '';
-                    prevActiveItem.style.color = '';
-                    prevActiveItem.classList.remove('active');
-                }
-    
-                this.style.backgroundColor = '#FF3147';
-                this.style.color = 'white';
-                this.classList.add('active');
-    
-                const imagePath = this.getAttribute("data-image");
-                projectImage.setAttribute("src", imagePath);
-            });
-        });
-    });
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    
-    window.onscroll = function () {
-        scrollFunction();
-    };
-    
-    function scrollFunction() {
-        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollToTopBtn.style.display = "block";
-        } else {
-            scrollToTopBtn.style.display = "none";
-        }
-    }</script>
+        </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>  
