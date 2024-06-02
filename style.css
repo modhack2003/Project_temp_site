@@ -28,35 +28,28 @@ body {
   transition: transform 0.3s ease;
 }
 
-
 .navbar {
   background-color: #fff;
-
   border-bottom: 1px solid #ddd;
-
 }
 
 .navbar-brand {
   font-size: 1.5rem;
-
   font-weight: bold;
-
 }
 
 .navbar-nav .nav-link {
   color: #333;
-
 }
 
 .navbar-nav .nav-link:hover {
   color: #007bff;
-  
 }
 
-
-.jumbotron {
+header {
   background-color: #f8f9fa;
   overflow: hidden;
+  
 }
 
 .a {
@@ -69,11 +62,8 @@ body {
   align-self: center;
 }
 
-
 .card {
   margin-bottom: 20px;
-
-
 }
 
 .card-body {
@@ -82,29 +72,28 @@ body {
   border: none;
   background: #f0f0f0;
   transition: box-shadow 0.3s;
-
 }
 
 .card-body:hover {
-
   box-shadow: 7px 7px 14px #a1a1a1,
     -7px -7px 14px #dbd8d8;
-
 }
 
 .card-title {
   font-weight: bold;
-
 }
 
 .modal-content {
   background-color: #fff;
-
+}
+.modal-header .btn-close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
 }
 
 .modal-title {
   font-weight: bold;
-
 }
 
 .modal-body input[type="email"],
@@ -116,6 +105,7 @@ body {
 .modal-body textarea:focus {
   border-color: #007bff;
 }
+
 .card-body i {
   font-size: 2rem;
   margin-top: 10px;
@@ -179,6 +169,11 @@ body {
   width: 100%;
 }
 
+.form-control.border {
+  border-width: 4px !important;
+}
+
+
 .why-choose-us {
   display: flex;
   flex-direction: column;
@@ -222,8 +217,16 @@ body {
   color: #555;
 }
 
+.toast-container {
+  z-index: 11;
+}
+ol{
+  
+  list-style: none;
+}
+
 @media (max-width: 576px) {
-  .jumbotron {
+  header {
     flex-direction: column;
     text-align: center;
   }

@@ -1,33 +1,78 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const contactUsModalEl = document.getElementById('contactUsModal');
+    const contactUsModal = new bootstrap.Modal(contactUsModalEl);
 
-$(document).ready(function() {
-    // Change project image based on list item click
-    $('.list-group-item').on('click', function() {
-        var newImage = $(this).data('image');
-    
-        $('#project-image').attr('src', newImage);
+    document.getElementById('contact-us-button').addEventListener('click', function () {
+        contactUsModal.show();
     });
 
-    // Show pop-up form on Contact Us button click
-    $('#contact-us-button').on('click', function() {
-        $('#contactUsModal').modal('show');
+    contactUsModalEl.addEventListener('hidden.bs.modal', function () {
+        
+        document.querySelectorAll('.modal-backdrop').forEach(function (backdrop) {
+            backdrop.remove();
+        });
     });
 
-    // Submit form to Getform.io
-    $('#contact-form').on('submit', function(e) {
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
         e.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
-            url: 'https://getform.io/f/paoxdekb', 
+        var formData = new FormData(this);
+        fetch('https://getform.io/f/paoxdekb', {
             method: 'POST',
-            data: formData,
-            success: function() {
-                alert('Form submitted successfully!');
-                $('#contactUsModal').modal('hide');
-                $('#contact-form')[0].reset();
-            },
-            error: function() {
-                alert('There was an error submitting the form. Please try again.');
-            }
+            body: formData
+        })
+        .then(function () {
+            contactUsModal.hide();
+            document.getElementById('contact-form').reset();
+
+            var toastEl = document.getElementById('formToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        })
+        .catch(function () {
+            alert('There was an error submitting the form. Please try again.');
         });
     });
 });
+document.getElementById('contact-us-button').addEventListener('click', () => {
+    const contactUsModal = new bootstrap.Modal(document.getElementById('contactUsModal'));
+    contactUsModal.show();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const listItems = document.querySelectorAll(".list-group-item");
+    const projectImage = document.getElementById("project-image");
+
+    listItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+            const prevActiveItem = document.querySelector('.list-group-item.active');
+            if (prevActiveItem) {
+                prevActiveItem.style.backgroundColor = '';
+                prevActiveItem.style.color = '';
+                prevActiveItem.classList.remove('active');
+            }
+
+            this.style.backgroundColor = '#FF3147';
+            this.style.color = 'white';
+            this.classList.add('active');
+
+            const imagePath = this.getAttribute("data-image");
+            projectImage.setAttribute("src", imagePath);
+        });
+    });
+});
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+}
